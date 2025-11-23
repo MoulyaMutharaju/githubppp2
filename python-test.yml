@@ -1,0 +1,39 @@
+name: Test Project Workflow
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  jobA:
+    name: Run Python File
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Run app.py
+        run: python app.py
+
+  jobB:
+    name: Run Linux Commands
+    runs-on: ubuntu-latest
+    needs: jobA
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Linux Commands
+        run: |
+          echo "Job B running"
+          mkdir test_folder
+          cd test_folder
+          pwd
+          ls -la
