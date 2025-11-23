@@ -1,6 +1,5 @@
 name: Manual Test Pipeline With Approval
 
-# Only manual trigger
 on:
   workflow_dispatch:
 
@@ -10,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     environment:
-      name: prod   # requires approval
+      name: prod
 
     steps:
       - name: Checkout code
@@ -24,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
 
     environment:
-      name: prod   # same approval
+      name: prod
 
     steps:
       - name: Basic commands
@@ -34,3 +33,5 @@ jobs:
           cd test_folder
           pwd
           ls -la
+
+
