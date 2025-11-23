@@ -33,5 +33,3 @@ jobs:
           cd test_folder
           pwd
           ls -la
-
-
